@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "ExamAttempt" ADD COLUMN     "attemptDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
