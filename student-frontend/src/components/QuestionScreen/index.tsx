@@ -117,6 +117,7 @@ const QuestionScreen: FC = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentQuestionID = searchParams.get("c");
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   console.log("Updated query params:", window.location.search);
 
@@ -138,7 +139,7 @@ const QuestionScreen: FC = () => {
 
         console.log("Token:", token, "Exam ID:", examID);
 
-        const response = await axios.get('http://localhost:5000/student/fetch-questions', {
+        const response = await axios.get(`${API_BASE_URL}/student/fetch-questions`, {
           headers: { Authorization: `Bearer ${token}` },
           params: { examID },
         });
@@ -268,7 +269,7 @@ const submitExam = async () => {
 
     console.log('Payload:', payload);
 
-    const response = await axios.post('http://localhost:5000/student/submit-exam', payload, {
+    const response = await axios.post(`${API_BASE_URL}/student/submit-exam`, payload, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -325,7 +326,7 @@ const handleAnswerSelection = async (questionID: number, selectedOption: string 
     console.log('Payload to be sent:', payload);
 
     const response = await axios.post(
-      'http://localhost:5000/student/submit-answer',
+      `${API_BASE_URL}/student/submit-answer`,
       payload,
       {
         headers: {

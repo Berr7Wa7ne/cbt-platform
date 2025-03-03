@@ -121,6 +121,7 @@ const AvailableExamsScreen: React.FC = () => {
 
   const { setExamID } = useExam(); 
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
   useEffect(() => {
     const fetchExams = async () => {
@@ -131,7 +132,7 @@ const AvailableExamsScreen: React.FC = () => {
           throw new Error('No token found');
         }
 
-        const response = await axios.get('http://localhost:5000/student/exams', {
+        const response = await axios.get(`${API_BASE_URL}/student/exams`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

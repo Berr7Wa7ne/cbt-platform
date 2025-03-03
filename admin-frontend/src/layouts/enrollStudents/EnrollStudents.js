@@ -11,6 +11,8 @@ const EnrollStudents = () => {
   const [controller, dispatch] = useMaterialUIController();
   const { enrollData } = controller;
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEnrollData(dispatch, {
@@ -29,7 +31,7 @@ const EnrollStudents = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/admin/enrollStudent', enrollData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/enrollStudent`, enrollData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

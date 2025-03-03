@@ -4,10 +4,27 @@ import styled from 'styled-components';
 
 import { AppLogo } from '../../config/icons';
 import { PageCenter } from '../../styles/Global';
+import { device } from '../../styles/BreakPoints';
 
 interface LogoAnimationProps {
   logoSize: string;
 }
+
+const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+
+  @media ${device.md} {
+    margin-bottom: 20px;
+
+    svg {
+      width: 185px;
+      height: 80px;
+    }
+  }
+`;
 
 
 const LogoText = styled.h2`
@@ -55,8 +72,10 @@ const SplashScreen = () => {
   return (
     <PageCenter justifyCenter>
       <LogoAnimation logoSize={logoSize}>
-        <AppLogo />
-        <LogoText>EVERGREEN VALLEY UNIVERSITY</LogoText>
+        <LogoContainer>
+          <AppLogo />
+          <LogoText>EVERGREEN VALLEY UNIVERSITY</LogoText>
+        </LogoContainer>
       </LogoAnimation>
     </PageCenter>
   );

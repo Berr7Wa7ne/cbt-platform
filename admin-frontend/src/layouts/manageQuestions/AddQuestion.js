@@ -15,6 +15,7 @@ import axios from 'axios';
 function AddQuestion() {
   const [controller, dispatch] = useMaterialUIController();
   const { questionData } = controller;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   console.log('questionData:', questionData);
   const options = Array.isArray(questionData.options) ? questionData.options : [];
@@ -57,7 +58,7 @@ function AddQuestion() {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/admin/add-question', questionData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/add-question`, questionData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

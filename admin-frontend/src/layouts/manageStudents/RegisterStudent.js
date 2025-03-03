@@ -12,6 +12,7 @@ import axios from 'axios';
 function RegisterStudent() {
   const [controller, dispatch] = useMaterialUIController();
   const { studentData } = controller;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +34,7 @@ function RegisterStudent() {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/admin/add-student', studentData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/add-student`, studentData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

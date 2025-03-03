@@ -15,6 +15,7 @@ import axios from 'axios';
 function AddCourse() {
   const [controller, dispatch] = useMaterialUIController();
   const { courseData } = controller;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +38,7 @@ function AddCourse() {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/admin/add-course', courseData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/add-course`, courseData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

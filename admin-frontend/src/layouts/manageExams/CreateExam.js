@@ -15,6 +15,7 @@ import axios from 'axios';
 function CreateExam() {
   const [controller, dispatch] = useMaterialUIController();
   const { examData } = controller;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +38,7 @@ function CreateExam() {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/admin/add-exam', examData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/add-exam`, examData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

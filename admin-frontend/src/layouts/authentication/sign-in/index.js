@@ -29,28 +29,29 @@ function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Load backend URL from .env
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, {
         email,
         password,
       });
-
+  
       if (rememberMe) {
         localStorage.setItem('authToken', response.data.token);
       } else {
         sessionStorage.setItem('authToken', response.data.token);
       }
-
+  
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.error || 'Login failed. Please try again.');
     }
   };
-
+  
   return (
     <BasicLayout image={bgImage}>
       <Card>

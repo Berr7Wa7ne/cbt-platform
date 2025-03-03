@@ -121,6 +121,7 @@ const ResultScreen: FC = () => {
 
   const maxScore = ExamDetails?.totalScore || 100; 
   const scorePercentage = (obtainedScore / maxScore) * 100;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
   console.log("Obtained Score:", obtainedScore);
   console.log("Score Percentage:", scorePercentage);
@@ -134,7 +135,7 @@ const ResultScreen: FC = () => {
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No authentication token found');
 
-        const requestUrl = `http://localhost:5000/student/results?examID=${examID}`;
+        const requestUrl = `${API_BASE_URL}/student/results?examID=${examID}`;
         const response = await axios.get(requestUrl, {
           headers: { Authorization: `Bearer ${token}` },
         });

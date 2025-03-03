@@ -68,6 +68,7 @@ const ExamDetailsScreen: React.FC = () => {
   const { ExamDetails, setExamDetails } = useExam();
   const { examID } = useExam();
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const fetchExamDetails = async (): Promise<ExamDetailsType> => {
@@ -89,7 +90,7 @@ const ExamDetailsScreen: React.FC = () => {
         console.log("Frontend examID:", formattedExamID);
 
         const response = await axios.post<ExamDetailsType>(
-          'http://localhost:5000/student/exam-details',
+          `${API_BASE_URL}/student/exam-details`,
           { formattedExamID },
           {
             headers: {
