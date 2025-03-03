@@ -38,20 +38,20 @@ function Basic() {
         email,
         password,
       });
-  
+
       if (rememberMe) {
         localStorage.setItem('authToken', response.data.token);
       } else {
         sessionStorage.setItem('authToken', response.data.token);
       }
-  
+
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.error || 'Login failed. Please try again.');
     }
   };
-  
+
   return (
     <BasicLayout image={bgImage}>
       <Card>
