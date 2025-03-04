@@ -6,6 +6,8 @@ const authRoutes = require('./routes/authRoutes');
 const studentRoutes = require('./routes/studentRoutes')
 const studentAuthRoutes = require('./routes/studentAuthRoutes');
 
+app.set('trust proxy', 1);
+
 app.use(cors({
     origin: ['http://localhost:3000', 'https://cbt-student-frontend.vercel.app', 'https://cbt-admin-frontend.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
