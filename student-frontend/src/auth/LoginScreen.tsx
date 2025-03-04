@@ -101,6 +101,7 @@ const LoginScreen: FC = () => {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleLoginClick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -113,7 +114,7 @@ const LoginScreen: FC = () => {
     setError(null);
   
     try {
-      const response = await axios.post('http://localhost:5000/student/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/student/auth/login`, {
         email,
         password,
       });

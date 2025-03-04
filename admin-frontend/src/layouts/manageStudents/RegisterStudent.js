@@ -12,7 +12,7 @@ import axios from 'axios';
 function RegisterStudent() {
   const [controller, dispatch] = useMaterialUIController();
   const { studentData } = controller;
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

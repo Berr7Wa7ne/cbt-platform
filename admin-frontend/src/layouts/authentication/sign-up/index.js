@@ -22,7 +22,7 @@ function Cover() {
   const [role, setRole] = useState('');
   const [error, setError] = useState('');
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleSignUp = async (e) => {
     e.preventDefault();

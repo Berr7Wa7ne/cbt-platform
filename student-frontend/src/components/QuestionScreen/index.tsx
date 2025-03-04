@@ -117,7 +117,7 @@ const QuestionScreen: FC = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentQuestionID = searchParams.get("c");
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   console.log("Updated query params:", window.location.search);
 

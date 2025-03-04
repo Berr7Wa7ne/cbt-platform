@@ -121,7 +121,7 @@ const ResultScreen: FC = () => {
 
   const maxScore = ExamDetails?.totalScore || 100; 
   const scorePercentage = (obtainedScore / maxScore) * 100;
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   console.log("Obtained Score:", obtainedScore);
   console.log("Score Percentage:", scorePercentage);

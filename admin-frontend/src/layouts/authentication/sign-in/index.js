@@ -29,7 +29,8 @@ function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Load backend URL from .env
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // Load backend URL from .env
+  console.log("API BASE URL:", process.env.REACT_APP_API_BASE_URL);
 
   const handleLogin = async (e) => {
     e.preventDefault();
